@@ -28,7 +28,7 @@ void print_square(int i);
 
 void make_square(bg_square_t *square, int **digit_map, int length, int width);
 
-void free_allocs(char *map, bg_square_t *bg_square, int **digit_map, int length);
+void free_alloc(char *map, bg_square_t *bg_square, int **digit_map, int length);
 
 int is_correct_map(char *map);
 

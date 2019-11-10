@@ -27,7 +27,7 @@ int eval_digit_map(char *map)
     j = -1;
     }
     make_square(bg_square, digit_map, length, width);
-    free_allocs(map, bg_square, digit_map, length);
+    free_alloc(map, bg_square, digit_map, length);
     return (0);
 }
 
