@@ -5,6 +5,7 @@
 ** find the largest square
 */
 
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "bsqh.h"
@@ -39,24 +40,22 @@ void print_square(int i)
         my_putchar('x');
 }
 
-void make_square(bg_square_t *square, int **digit_map, int length, int width)
+void make_square(bg_square_t *square, char *map, int width, long long size_fd)
 {
     int i = -1;
     int j = -1;
+    int k = 0;
 
+    while ((map[k] >= '0' && map[k] <= '9') || map[k] == '\n')
+        ++k;
     while (++i < square->size) {
-        while (++j < square->size)
-            digit_map[square->y - i][square->x - j] = -1;
+        while (++j < square->size) {
+            map[(width * (square->y - i))
+                + square->x - j + k + square->y - i] = 'x';
+        }
         j = -1;
     }
-    i = -1;
-    j = -1;
-    while (++i < length) {
-        while (++j < width)
-                print_square(digit_map[i][j]);
-        my_putchar(10);
-        j = -1;
-    }
+    write(1, (map + k), size_fd - k);
 }
 
 void free_alloc(char *map, bg_square_t *bg_square, int **digit_map, int length)

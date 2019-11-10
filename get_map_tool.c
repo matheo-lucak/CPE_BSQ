@@ -56,9 +56,8 @@ int get_length(char const *map)
     return (length);
 }
 
-char *read_map(char const *filepath)
+char *read_map(char const *filepath, long long size)
 {
-    long long size = get_byte_size(filepath);
     char *buffer = malloc(size + 1);
     int fd = 0;
 
