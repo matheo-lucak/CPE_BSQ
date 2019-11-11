@@ -90,7 +90,7 @@ int powering_ten(int len);
 
 int my_arrlen(char **str);
 
-int my_intlend(int *tab);
+int my_intlen(int *tab);
 
 char *my_strcpaddress(char **dest, char const *src);
 

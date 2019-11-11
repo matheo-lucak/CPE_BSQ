@@ -65,6 +65,7 @@ char *read_map(char const *filepath, long long size)
     if (fd == -1)
         return (NULL);
     read(fd, buffer, size);
+    buffer[size] = '\0';
     close(fd);
     return (buffer);
 }

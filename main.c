@@ -17,8 +17,10 @@ int eval_digit_map(char *map, long long size)
     int width = get_width(map);
     int length = get_length(map);
     int i, j = i = -1;
+    int is_filled = is_correct_map(map);
 
-    if (is_correct_map(map) == 84)
+    bg_square->size = 0;
+    if (is_filled == 84)
         return (84);
     while (++i < length) {
         while (++j < width)
@@ -26,7 +28,7 @@ int eval_digit_map(char *map, long long size)
                 eval_digit(digit_map, i, j, bg_square);
     j = -1;
     }
-    make_square(bg_square, map, width, size);
+    make_sqr(bg_square, map, size, is_filled);
     free_alloc(map, bg_square, digit_map, length);
     return (0);
 }
