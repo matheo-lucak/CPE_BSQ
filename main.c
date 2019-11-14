@@ -42,7 +42,7 @@ int main (int ac, char **av)
 {
     long long size = get_byte_size(av[1]);
 
-    if (ac != 2 || size == 0)
+    if (ac != 2 || size <= 3)
         return (84);
     return (eval_digit_map((read_map(av[1], size)), size));
 }
