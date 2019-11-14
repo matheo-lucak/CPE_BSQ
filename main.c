@@ -16,8 +16,13 @@ int eval_digit_map(char *map, long long size)
     int **digit_map = make_digit_map(map);
     int width = get_width(map);
     int length = get_length(map);
-    int i, j = i = -1;
-    int is_filled = is_correct_map(map);
+    int i = -1;
+    int j = -1;
+    int is_filled = is_correct_map(map, width, length);
+
+    if (is_filled == 84) {
+        return (84);
+    }
 
     bg_square->size = 0;
     if (is_filled == 84)
@@ -37,7 +42,7 @@ int main (int ac, char **av)
 {
     long long size = get_byte_size(av[1]);
 
-    if (ac != 2)
+    if (ac != 2 || size == 0)
         return (84);
     return (eval_digit_map((read_map(av[1], size)), size));
 }

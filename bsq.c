@@ -11,6 +11,10 @@
 #include "bsqh.h"
 #include "my.h"
 
+int increment_index(int *i, int *k, int *y, int width);
+
+void check_is_filled( char *map, int k, int i, int *is_filled);
+
 void eval_digit(int **digit_map, int i, int j, bg_square_t *bg_square)
 {
     int a = digit_map[i][j - 1];
@@ -79,19 +83,26 @@ void free_alloc(char *map, bg_square_t *bg_square, int **digit_map, int length)
     free(bg_square);
 }
 
-int is_correct_map(char *map)
+int is_correct_map(char *map, int width, int length)
 {
-    int i = 0;
+    int i = -1;
     int is_filled = 1;
+    int k = -1;
+    int y = 0;
 
-    while (map[i] >= '0' && map[i] <= '9')
-        i++;
-    while (map[++i] != '\0') {
-        if (map[i] == '.')
-            is_filled = 0;
-        if (map[i] != '\n' && map[i] != '.' && map[i] != 'o' &&
-            map[i] != '\0')
+    while (map[++i - 1] != '\n');
+    while (map[i] != '\0') {
+        while (map[++k + i] != '\n') {
+            check_is_filled(map, k, i, &is_filled);
+            if (map[k + i] != '\n' && map[i + k] != '.' && map[i + k] != 'o' &&
+                map[k +  i] != '\0')
+                return (84);
+        }
+        if (increment_index(&i, &k, &y, width) == 84)
             return (84);
     }
-    return (is_filled);
+    if (y != length)
+        return (84);
+    else
+        return (is_filled);
 }

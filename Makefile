@@ -9,7 +9,8 @@ CC	=	gcc
 
 SRC	=	get_map_tool.c	\
 		bsq.c	\
-		main.c
+		main.c	\
+		auxiliary_coding_style.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

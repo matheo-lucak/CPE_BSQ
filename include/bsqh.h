@@ -33,6 +33,7 @@ void make_sqr(bg_square_t *square, char *map,
 
 void free_alloc(char *map, bg_square_t *bg_square, int **digit_map, int length);
 
-int is_correct_map(char *map);
+int is_correct_map(char *map, int width, int length);
+
 
 #endif
