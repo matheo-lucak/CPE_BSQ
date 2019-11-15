@@ -20,10 +20,6 @@ int eval_digit_map(char *map, long long size)
     int j = -1;
     int is_filled = is_correct_map(map, width, length);
 
-    if (is_filled == 84) {
-        return (84);
-    }
-
     bg_square->size = 0;
     if (is_filled == 84)
         return (84);
