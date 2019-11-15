@@ -37,8 +37,12 @@ int eval_digit_map(char *map, long long size)
 int main (int ac, char **av)
 {
     long long size = get_byte_size(av[1]);
+    char *buffer;
 
     if (ac != 2 || size == 0)
         return (84);
-    return (eval_digit_map((read_map(av[1], size)), size));
+    buffer = read_map(av[1], size);
+    if (buffer == NULL)
+        return (84);
+    return (eval_digit_map(buffer, size));
 }
