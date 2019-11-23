@@ -13,6 +13,8 @@
 #include <stdlib.h>
 #include "my.h"
 
+int is_bckslsh(char *map, int k);
+
 long long get_byte_size(char const *filepath)
 {
     struct stat *stat_buf = malloc(sizeof(struct stat));
@@ -84,8 +86,7 @@ int **make_digit_map(char *map)
     while (++i < length) {
         digit_map[i] = malloc(sizeof(int) * (width + 1));
         while (++j < width) {
-            if (map[++k] == '\n')
-                k++;
+            k = is_bckslsh(map, k);
             digit_map[i][j] = (map[k] + 1) % 2;
         }
     j = -1;

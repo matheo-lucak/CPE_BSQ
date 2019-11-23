@@ -25,8 +25,7 @@ int eval_digit_map(char *map, long long size)
         return (84);
     while (++i < length) {
         while (++j < width)
-            if (digit_map[i][j] != 0 && i != 0 && j != 0)
-                eval_digit(digit_map, i, j, bg_square);
+            eval_digit(digit_map, i, j, bg_square);
     j = -1;
     }
     make_sqr(bg_square, map, size, is_filled);

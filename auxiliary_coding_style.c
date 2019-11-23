@@ -21,3 +21,10 @@ void check_is_filled( char *map, int k, int i, int *is_filled)
     if (map[k + i] == '.')
         *is_filled = 0;
 }
+
+int is_bckslsh(char *map, int k)
+{
+    if (map[++k] == '\n')
+                k++;
+    return (k);
+}
