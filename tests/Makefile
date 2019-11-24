@@ -26,7 +26,7 @@ LDFLAGS		=	-L./../lib/
 LDLIBS		=	-lmy -lcriterion -lg
 
 
-all:			$(NAME)
+all:			fclean $(NAME)
 				./$(NAME)
 
 $(NAME):		$(OBJ)
