@@ -12,7 +12,7 @@
 
 int bsq(char *filepath);
 
-int main (int ac, char **av)
+int main(int ac, char **av)
 {
     if (ac != 2)
         return (84);

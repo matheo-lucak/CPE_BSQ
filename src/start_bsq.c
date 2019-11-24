@@ -10,6 +10,30 @@
 #include "bsqh.h"
 #include "my.h"
 
+int eval_digit(int **digit_map, int i, int j, bg_square_t *bg_square)
+{
+    int a, b, c;
+    int value_set = 0;
+ 
+    if (digit_map[i][j] == 0 || i == 0 || j == 0)
+        return (0);
+    a = digit_map[i][j - 1];
+    b = digit_map[i - 1][j - 1];
+    c = digit_map[i - 1][j];
+    if (a <= b && a <= c && value_set == 0) {
+        digit_map[i][j] = a + 1;
+        value_set = 1;
+    }
+    if (b <= a && b <= c && value_set == 0) {
+        digit_map[i][j] = b + 1;
+        value_set = 1;
+    }
+    if (c <= a && c <= b && value_set == 0)
+        digit_map[i][j] = c + 1;
+    set_bg_square(digit_map, i, j, bg_square);
+    return (0);
+}
+
 int eval_digit_map(char *map, long long size)
 {
     bg_square_t *bg_square = malloc(sizeof(bg_square_t));

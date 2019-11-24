@@ -15,27 +15,13 @@ int increment_index(int *i, int *k, int *y, int width);
 
 void check_is_filled( char *map, int k, int i, int *is_filled);
 
-int eval_digit(int **digit_map, int i, int j, bg_square_t *bg_square)
+void set_bg_square(int **digit_map, int i, int j, bg_square_t *bg_square)
 {
-    int a, b, c;
-
-    if (digit_map[i][j] == 0 || i == 0 || j == 0)
-        return (0);
-    a = digit_map[i][j - 1];
-    b = digit_map[i - 1][j - 1];
-    c = digit_map[i - 1][j];
-    if (a <= b && a <= c)
-        digit_map[i][j] = a + 1;
-    else if (b <= a && b <= c)
-        digit_map[i][j] = b + 1;
-    else if (c <= a && c <= b)
-        digit_map[i][j] = c + 1;
     if (bg_square->size < digit_map[i][j]) {
         bg_square->x = j;
         bg_square->y = i;
         bg_square->size = digit_map[i][j];
     }
-    return (0);
 }
 
 void print_large_square(bg_square_t *square, char *map, long long size, int k)

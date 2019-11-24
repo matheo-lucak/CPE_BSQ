@@ -24,6 +24,7 @@ char *read_map(char const *filepath, long long size);
 
 int **make_digit_map(char *map);
 int eval_digit(int **digit_map, int i, int j, bg_square_t *bg_square);
+void set_bg_square(int **digit_map, int i, int j, bg_square_t *bg_square);
 void make_sqr(bg_square_t *square, char *map,
     long long size_fd, int is_filled);
 void print_square(int i);
