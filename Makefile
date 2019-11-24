@@ -5,16 +5,17 @@
 ## rtfm
 ##
 
-CC	=	gcc
+CC			=	gcc
 
-SRC	=	get_map_tool.c	\
-		bsq.c	\
-		main.c	\
-		auxiliary_coding_style.c	\
+SRC			=	src/get_map_tool.c				\
+				src/auxiliary_coding_style.c	\
+				src/bsq.c						\
+				src/start_bsq.c					\
+				src/main.c						\
 
-OBJ	=	$(SRC:.c=.o)
+OBJ			=	$(SRC:.c=.o)
 
-NAME	=	bsq
+NAME		=	bsq
 
 CPPFLAGS	=	-I./include/
 
@@ -22,8 +23,7 @@ LDFLAGS		=	-L./lib
 
 LDLIBS		=	-lmy
 
-LIB	=	./lib/libmy.a
-
+LIB			=	./lib/libmy.a
 
 $(NAME):	 $(LIB) $(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS)
@@ -37,17 +37,20 @@ gdb:	fclean $(LIB) $(OBJ)
 	$(CC) $(SRC) -o $(NAME) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -W -Wall -Wextra -g
 	gdb ./$(NAME)
 
-tests_run:
+tests_run: $(LIB)
 	make -C tests/
-	./tests/unit_tests
+
 $(LIB):
 	make -C ./lib/my/
+
 clean:
 	rm -f $(OBJ)
 	make clean -C ./lib/my/
+
 fclean: clean
 	rm -f $(NAME)
 	make fclean -C ./lib/my
+	make fclean -C ./tests
 
 re:	fclean all
 

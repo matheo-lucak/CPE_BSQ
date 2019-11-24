@@ -31,4 +31,6 @@ void print_square(int i);
 void is_bckslsh(char *map, int k);
 void free_alloc(char *map, bg_square_t *bg_square, int **digit_map, int length);
 
+int bsq(char *filepath);
+
 #endif

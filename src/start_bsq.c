@@ -33,14 +33,14 @@ int eval_digit_map(char *map, long long size)
     return (0);
 }
 
-int main (int ac, char **av)
+int bsq(char *filepath)
 {
-    long long size = get_byte_size(av[1]);
+    long long size = get_byte_size(filepath);
     char *buffer;
 
-    if (ac != 2 || size == 0)
+    if (size == 0)
         return (84);
-    buffer = read_map(av[1], size);
+    buffer = read_map(filepath, size);
     if (buffer == NULL)
         return (84);
     return (eval_digit_map(buffer, size));
