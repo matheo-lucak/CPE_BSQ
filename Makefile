@@ -31,10 +31,10 @@ $(NAME):	 $(LIB) $(OBJ)
 all:	$(NAME)
 
 debug:	fclean $(LIB) $(OBJ)
-	$(CC) $(SRC) -o $(NAME) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -W -Wall -Wextra -g
+	$(CC) $(OBJ) -o $(NAME) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -W -Wall -Wextra -g
 
 gdb:	fclean $(LIB) $(OBJ)
-	$(CC) $(SRC) -o $(NAME) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -W -Wall -Wextra -g
+	$(CC) $(OBJ) -o $(NAME) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -W -Wall -Wextra -g
 	gdb ./$(NAME)
 
 tests_run: $(LIB)
