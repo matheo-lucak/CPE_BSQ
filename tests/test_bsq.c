@@ -7,7 +7,6 @@
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "my.h"
 #include "bsqh.h"
 
 Test(bsq, incorrect_file)
